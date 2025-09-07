@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pramaanik - Certificate Verification Platform</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1 class="platform-name">Pramaanik</h1>
+            </div>
+            
+            <div class="nav-menu">
+                <button class="nav-item active" data-page="home">Home</button>
+                <button class="nav-item" data-page="verify">Verify Certificate</button>
+                <button class="nav-item" data-page="wallet">My Wallet</button>
+                <button class="nav-item" data-page="feedback">Feedback</button>
+                <button class="nav-item" data-page="contact">Contact Us</button>
+            </div>
+            
+            <div class="nav-auth">
+                <button id="loginBtn" class="login-btn">
+                    <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 3h6v6M21 3l-7 7M9 21H3v-6M3 21l7-7"/>
+                    </svg>
+                    Login
+                </button>
+                <div id="profileBtn" class="profile-btn hidden">
+                    <div class="avatar">
+                        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h1>Welcome to Pramaanik</h1>
+                    <p>India's trusted certificate verification platform. Upload your certificates or scan QR codes to verify authenticity instantly.</p>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <svg class="stat-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22,4 12,14.01 9,11.01"/>
+                        </svg>
+                        <div class="stat-number">100</div>
+                        <div class="stat-label">Certificates Verified</div>
+                    </div>
+                    <div class="stat-card">
+                        <svg class="stat-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Trusted Institutions</div>
+                    </div>
+                    <div class="stat-card">
+                        <svg class="stat-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="8" r="7"/>
+                            <polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/>
+                        </svg>
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Accuracy Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="upload-section">
+                <div class="section-card">
+                    <h2>Verify Your Certificate</h2>
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="upload">
+                            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7,10 12,15 17,10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            Upload File
+                        </button>
+                        <button class="tab-btn" data-tab="scan">
+                            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="5" height="5"/>
+                                <rect x="16" y="3" width="5" height="5"/>
+                                <rect x="3" y="16" width="5" height="5"/>
+                                <path d="M21 16h-3a2 2 0 0 0-2 2v3"/>
+                            </svg>
+                            Scan QR Code
+                        </button>
+                    </div>
+                    
+                    <div id="uploadTab" class="tab-content active">
+                        <div class="upload-area" id="uploadArea">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7,10 12,15 17,10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            <h3>Upload Certificate</h3>
+                            <p>Drag and drop your certificate here, or click to browse</p>
+                            <p class="file-info">Supported formats: PDF, JPEG, PNG</p>
+                            <button class="upload-btn">Choose File</button>
+                            <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png" hidden>
+                        </div>
+                    </div>
+                    
+                    <div id="scanTab" class="tab-content">
+                        <div class="scanner-area">
+                            <div class="scanner-preview" id="scannerPreview">
+                                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                                    <circle cx="12" cy="13" r="4"/>
+                                </svg>
+                                <h3>Scan QR Code</h3>
+                                <p>Position the QR code within the camera view</p>
+                            </div>
+                            <button id="startScanBtn" class="scan-btn">Start Scan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="recentActivity" class="recent-activity hidden">
+                <div class="section-card">
+                    <h3>Recent Activity</h3>
+                    <div id="activityList" class="activity-list">
+                        <!-- Activity items will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Verify Page -->
+        <div id="verifyPage" class="page">
+            <div class="page-header">
+                <h1>Certificate Verification</h1>
+                <p>Enter certificate ID or name to verify authenticity</p>
+            </div>
+            
+            <div class="search-section">
+                <div class="section-card">
+                    <h3>
+                        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="M21 21l-4.35-4.35"/>
+                        </svg>
+                        Search Certificate
+                    </h3>
+                    <div class="search-form">
+                        <label for="certificateSearch">Certificate ID or Name</label>
+                        <input type="text" id="certificateSearch" placeholder="Enter certificate ID (e.g., CERT_2024_001) or certificate name">
+                        <button id="searchBtn" class="primary-btn">
+                            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="M21 21l-4.35-4.35"/>
+                            </svg>
+                            Search Certificate
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="searchResult" class="search-result hidden">
+                <div class="section-card">
+                    <div class="result-header">
+                        <h3>
+                            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14,2 14,8 20,8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10,9 9,9 8,9"/>
+                            </svg>
+                            Verification Result
+                        </h3>
+                        <div id="statusBadge" class="status-badge"></div>
+                    </div>
+                    <div id="resultDetails" class="result-details">
+                        <!-- Result details will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="sample-certificates">
+                <div class="section-card">
+                    <h3>Sample Certificates for Testing</h3>
+                    <div class="sample-list">
+                        <div class="sample-item" data-cert-id="CERT_2024_001">
+                            <div class="sample-info">
+                                <div class="sample-status verified">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <polyline points="22,4 12,14.01 9,11.01"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="sample-id">CERT_2024_001</p>
+                                    <p class="sample-name">Bachelor of Technology in Computer Science</p>
+                                </div>
+                            </div>
+                            <span class="badge verified">Verified</span>
+                        </div>
+                        <div class="sample-item" data-cert-id="CERT_2024_002">
+                            <div class="sample-info">
+                                <div class="sample-status verified">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <polyline points="22,4 12,14.01 9,11.01"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="sample-id">CERT_2024_002</p>
+                                    <p class="sample-name">Professional Certification in Data Science</p>
+                                </div>
+                            </div>
+                            <span class="badge verified">Verified</span>
+                        </div>
+                        <div class="sample-item" data-cert-id="CERT_2024_003">
+                            <div class="sample-info">
+                                <div class="sample-status invalid">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="15" y1="9" x2="9" y2="15"/>
+                                        <line x1="9" y1="9" x2="15" y2="15"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="sample-id">CERT_2024_003</p>
+                                    <p class="sample-name">Higher Secondary Certificate</p>
+                                </div>
+                            </div>
+                            <span class="badge invalid">Invalid</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wallet Page -->
+        <div id="walletPage" class="page">
+            <div class="page-header">
+                <div>
+                    <h1>
+                        <svg class="icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/>
+                            <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/>
+                            <line x1="18" y1="12" x2="18" y2="12"/>
+                        </svg>
+                        My Wallet
+                    </h1>
+                    <p>Manage and access all your verified certificates</p>
+                </div>
+                <div class="wallet-stats">
+                    <div class="total-count">4</div>
+                    <div class="total-label">Total Certificates</div>
+                </div>
+            </div>
+
+            <div class="wallet-stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number green">3</div>
+                    <div class="stat-label">Verified</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number blue">1</div>
+                    <div class="stat-label">Academic</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number green">2</div>
+                    <div class="stat-label">Professional</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number purple">1</div>
+                    <div class="stat-label">Government</div>
+                </div>
+            </div>
+
+            <div class="wallet-tabs">
+                <button class="tab-btn active" data-wallet-tab="all">All Certificates</button>
+                <button class="tab-btn" data-wallet-tab="academic">Academic</button>
+                <button class="tab-btn" data-wallet-tab="professional">Professional</button>
+                <button class="tab-btn" data-wallet-tab="government">Government</button>
+            </div>
+
+            <div class="certificates-grid">
+                <div class="certificate-card" data-type="academic">
+                    <div class="cert-header">
+                        <div class="cert-info">
+                            <svg class="cert-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                            </svg>
+                            <div>
+                                <h4>Bachelor of Technology in Computer Science</h4>
+                                <p>Indian Institute of Technology, Delhi</p>
+                            </div>
+                        </div>
+                        <div class="cert-badges">
+                            <span class="badge academic">Academic</span>
+                            <span class="badge verified">Verified</span>
+                        </div>
+                    </div>
+                    <div class="cert-date">
+                        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        Issued: 2024-06-15
+                    </div>
+                    <div class="cert-actions">
+                        <button class="btn outline">View</button>
+                        <button class="btn outline">Download</button>
+                        <button class="btn outline">Share</button>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-type="professional">
+                    <div class="cert-header">
+                        <div class="cert-info">
+                            <svg class="cert-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="7"/>
+                                <polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/>
+                            </svg>
+                            <div>
+                                <h4>Professional Certification in Data Science</h4>
+                                <p>All India Council for Technical Education</p>
+                            </div>
+                        </div>
+                        <div class="cert-badges">
+                            <span class="badge professional">Professional</span>
+                            <span class="badge verified">Verified</span>
+                        </div>
+                    </div>
+                    <div class="cert-date">
+                        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        Issued: 2024-08-20
+                    </div>
+                    <div class="cert-actions">
+                        <button class="btn outline">View</button>
+                        <button class="btn outline">Download</button>
+                        <button class="btn outline">Share</button>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-type="government">
+                    <div class="cert-header">
+                        <div class="cert-info">
+                            <svg class="cert-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 21h18"/>
+                                <path d="M5 21V7l8-4v18"/>
+                                <path d="M19 21V11l-6-4"/>
+                            </svg>
+                            <div>
+                                <h4>Digital India Certificate</h4>
+                                <p>Ministry of Electronics & IT</p>
+                            </div>
+                        </div>
+                        <div class="cert-badges">
+                            <span class="badge government">Government</span>
+                            <span class="badge verified">Verified</span>
+                        </div>
+                    </div>
+                    <div class="cert-date">
+                        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        Issued: 2024-07-10
+                    </div>
+                    <div class="cert-actions">
+                        <button class="btn outline">View</button>
+                        <button class="btn outline">Download</button>
+                        <button class="btn outline">Share</button>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-type="professional">
+                    <div class="cert-header">
+                        <div class="cert-info">
+                            <svg class="cert-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="7"/>
+                                <polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/>
+                            </svg>
+                            <div>
+                                <h4>Advanced Web Development</h4>
+                                <p>National Institute of Technology</p>
+                            </div>
+                        </div>
+                        <div class="cert-badges">
+                            <span class="badge professional">Professional</span>
+                            <span class="badge pending">Pending</span>
+                        </div>
+                    </div>
+                    <div class="cert-date">
+                        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        Issued: 2024-09-05
+                    </div>
+                    <div class="cert-actions">
+                        <button class="btn outline">View</button>
+                        <button class="btn outline">Download</button>
+                        <button class="btn outline">Share</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feedback Page -->
+        <div id="feedbackPage" class="page">
+            <div class="page-header">
+                <div class="feedback-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </div>
+                <h1>We Value Your Feedback</h1>
+                <p>Help us improve Pramaanik by sharing your thoughts and suggestions</p>
+            </div>
+
+            <div class="feedback-form-section">
+                <div class="section-card">
+                    <h3>Submit Feedback</h3>
+                    <form id="feedbackForm" class="feedback-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="feedbackName">Full Name *</label>
+                                <input type="text" id="feedbackName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="feedbackEmail">Email Address *</label>
+                                <input type="email" id="feedbackEmail" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="feedbackCategory">Feedback Category *</label>
+                            <select id="feedbackCategory" required>
+                                <option value="">Select a category</option>
+                                <option value="general">General Feedback</option>
+                                <option value="bug">Bug Report</option>
+                                <option value="feature">Feature Request</option>
+                                <option value="ui">User Interface</option>
+                                <option value="performance">Performance</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Overall Rating *</label>
+                            <div class="rating-group">
+                                <div class="star-rating" id="starRating">
+                                    <span class="star" data-rating="1">★</span>
+                                    <span class="star" data-rating="2">★</span>
+                                    <span class="star" data-rating="3">★</span>
+                                    <span class="star" data-rating="4">★</span>
+                                    <span class="star" data-rating="5">★</span>
+                                </div>
+                                <span id="ratingText" class="rating-text">Select rating</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="feedbackSubject">Subject *</label>
+                            <input type="text" id="feedbackSubject" placeholder="Brief summary of your feedback" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="feedbackMessage">Your Feedback *</label>
+                            <textarea id="feedbackMessage" rows="6" placeholder="Please provide detailed feedback..." required></textarea>
+                        </div>
+
+                        <div class="privacy-notice">
+                            <p><strong>Privacy Notice:</strong> Your feedback will be used solely to improve our services. We do not share personal information with third parties and will only contact you regarding your feedback if necessary.</p>
+                        </div>
+
+                        <button type="submit" class="primary-btn full-width">
+                            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"/>
+                                <polygon points="22,2 15,22 11,13 2,9 22,2"/>
+                            </svg>
+                            Submit Feedback
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="feedbackSuccess" class="feedback-success hidden">
+                <div class="success-card">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="success-icon">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22,4 12,14.01 9,11.01"/>
+                    </svg>
+                    <h2>Thank You!</h2>
+                    <p>Your feedback has been submitted successfully. We appreciate your input and will review it shortly.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contactPage" class="page">
+            <div class="page-header">
+                <h1>Contact Us</h1>
+                <p>Get in touch with our support team. We're here to help you with certificate verification, technical issues, and any questions about Pramaanik.</p>
+            </div>
+
+            <div class="contact-options">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </div>
+                    <h3>Phone Support</h3>
+                    <p>+91 844-831-3557</p>
+                    <span class="availability">Mon-Fri, 9 AM - 6 PM</span>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <h3>Email Support</h3>
+                    <p>support@Pramaanik.gov.in</p>
+                    <span class="availability">24/7 response within 24 hours</span>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Live Chat</h3>
+                    <p>Available on website</p>
+                    <span class="availability">Mon-Fri, 9 AM - 9 PM</span>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <h3>Technical Support</h3>
+                    <p>tech@Pramaanik.gov.in</p>
+                    <span class="availability">Mon-Fri, 9 AM - 6 PM</span>
+                </div>
+            </div>
+
+            <!-- <div class="contact-details">
+                <div class="section-card">
+                    <h3>
+                        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        Office Locations
+                    </h3>
+                    <div class="office-list">
+                        <div class="office-item">
+                            <h4>National Headquarters</h4>
+                            <p>Block A, Technology Bhawan, New Delhi - 110003</p>
+                            <span>+91 11 2123-4567</span>
+                            <span class="badge primary">Primary</span>
+                        </div>
+                        <div class="office-item">
+                            <h4>Mumbai Regional Office</h4>
+                            <p>15th Floor, Nirman Bhawan, Mumbai - 400021</p>
+                            <span>+91 22 2123-4567</span>
+                            <span class="badge secondary">Regional</span>
+                        </div>
+                        <div class="office-item">
+                            <h4>Bangalore Tech Center</h4>
+                            <p>Electronics City Phase 1, Bangalore - 560100</p>
+                            <span>+91 80 2123-4567</span>
+                            <span class="badge secondary">Technical</span>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- <div class="section-card">
+                    <h3>
+                        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> -->
+                            <!-- <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        Business Hours
+                    </h3>
+                    <div class="hours-list">
+                        <div class="hours-item">
+                            <span>Monday - Friday</span>
+                            <span>9:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Saturday</span>
+                            <span>10:00 AM - 4:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Sunday</span>
+                            <span>Closed</span>
+                        </div>
+                    </div>
+                    <div class="emergency-note">
+                        <p>Emergency support available 24/7 for critical issues</p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>
