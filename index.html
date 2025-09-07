@@ -11,39 +11,64 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <h1 class="platform-name">Pramaanik</h1>
-            </div>
-            
-            <div class="nav-menu">
-                <button class="nav-item active" data-page="home">Home</button>
-                <button class="nav-item" data-page="verify">Verify Certificate</button>
-                <button class="nav-item" data-page="wallet">My Wallet</button>
-                <button class="nav-item" data-page="feedback">Feedback</button>
-                <button class="nav-item" data-page="contact">Contact Us</button>
-            </div>
-            
-            <div class="nav-auth">
-                <button id="loginBtn" class="login-btn">
-                    <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 3h6v6M21 3l-7 7M9 21H3v-6M3 21l7-7"/>
-                    </svg>
-                    Login
-                </button>
-                <div id="profileBtn" class="profile-btn hidden">
-                    <div class="avatar">
-                        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                            <circle cx="12" cy="7" r="4"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
+   <!-- Navigation (Top for Desktop) -->
+<nav class="navbar desktop-nav">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <h1 class="platform-name">Pramaanik</h1>
+      </div>
+  
+      <div class="nav-menu">
+        <button class="nav-item active" data-page="home">Home</button>
+        <button class="nav-item" data-page="verify">Verify Certificate</button>
+        <button class="nav-item" data-page="wallet">My Wallet</button>
+        <button class="nav-item" data-page="feedback">Feedback</button>
+        <button class="nav-item" data-page="contact">Contact Us</button>
+      </div>
+  
+      <div class="nav-auth">
+        <button id="loginBtn" class="login-btn">
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 3h6v6M21 3l-7 7M9 21H3v-6M3 21l7-7"/>
+          </svg>
+          Login
+        </button>
+        <div id="profileBtn" class="profile-btn hidden">
+          <div class="avatar">
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Bottom Navigation (Mobile) -->
+  <nav class="bottom-nav mobile-nav">
+    <button class="nav-item active" data-page="home">
+      <span class="icon">🏠</span>
+      <span class="label">Home</span>
+    </button>
+    <button class="nav-item" data-page="verify">
+      <span class="icon">✅</span>
+      <span class="label">Verify</span>
+    </button>
+    <button class="nav-item" data-page="wallet">
+      <span class="icon">🎒</span>
+      <span class="label">Wallet</span>
+    </button>
+    <button class="nav-item" data-page="feedback">
+      <span class="icon">💬</span>
+      <span class="label">Feedback</span>
+    </button>
+    <button class="nav-item" data-page="contact">
+      <span class="icon">📞</span>
+      <span class="label">Contact</span>
+    </button>
+  </nav>
+  
 
     <!-- Main Content -->
     <main id="mainContent">
